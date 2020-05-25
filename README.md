@@ -1,4 +1,4 @@
-**Test task**
+**TEST TASK**
 
 **Initial Data:**
 1. Several CSV files. The number of files can be quite large (up to 100,000).
