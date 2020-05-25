@@ -27,22 +27,22 @@ public class CsvParser implements FileParser<Product> {
          if (file.exists()) {
             try (var bufferedReader = Files.newBufferedReader(file.toPath())) {
                // Fill result list
-               String s;
-               while ((s = bufferedReader.readLine()) != null) {
+               String row;
+               while ((row = bufferedReader.readLine()) != null) {
                   if (resultList.size() == 1000) break;
-                  resultList.add(new Product(s));
+                  resultList.add(new Product(row));
                }
                maxPrice = resultList.stream().max(Comparator.comparing(Product::getPrice)).get().getPrice();
                indexOfMaxPrice = resultList.indexOf(resultList.stream().max(Comparator.comparing(Product::getPrice)).get());
                // Next parsing - pushing of from the resulting list of expensive products
-               while (s != null) {
-                  var product = new Product(s);
+               while (row != null) {
+                  var product = new Product(row);
                   if (product.getPrice() < maxPrice) {
                      resultList.set(indexOfMaxPrice, product);
                      maxPrice = resultList.stream().max(Comparator.comparing(Product::getPrice)).get().getPrice();
                      indexOfMaxPrice = resultList.indexOf(resultList.stream().max(Comparator.comparing(Product::getPrice)).get());
                   }
-                  s = bufferedReader.readLine();
+                  row = bufferedReader.readLine();
                }
             } catch (IOException ioException) {
                ioException.printStackTrace();
