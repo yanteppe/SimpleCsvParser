@@ -1,4 +1,4 @@
-package com.yan.csv_data_collector;
+package com.yan.csv_data_collector.util;
 
 import java.io.File;
 import java.io.IOException;

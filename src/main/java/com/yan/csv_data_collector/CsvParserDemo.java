@@ -1,5 +1,7 @@
 package com.yan.csv_data_collector;
 
+import com.yan.csv_data_collector.util.CsvFileGenerator;
+
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
