@@ -1,6 +1,7 @@
 package com.yan.csv_data_collector;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -61,20 +62,6 @@ public class FileParserImpl implements FileParser<Product> {
     */
    private List<File> getListFiles(String pathToCsvSource) {
       return Arrays.asList(Objects.requireNonNull(new File(pathToCsvSource).listFiles()));
-   }
-
-   private void writeResultToFile(String pathToResultFile, List<Product> resultList) {
-      try (FileOutputStream out = new FileOutputStream("notes.txt");
-           BufferedOutputStream bos = new BufferedOutputStream(out)) {
-
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
-   }
-
-   private void writeRowToFile(BufferedWriter bufferedWriter, String record) throws IOException {
-      bufferedWriter.write(record);
-      bufferedWriter.newLine();
    }
 
 //   public List<Product> quickSort(List<Product> list) {

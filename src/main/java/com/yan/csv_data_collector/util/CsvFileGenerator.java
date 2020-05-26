@@ -16,9 +16,7 @@ import java.util.Random;
  * Generate CSV files with initial data
  */
 public class CsvFileGenerator {
-   private static final String PATH_TO_RESULT_DIR = "src" +
-         File.separator + "main" +
-         File.separator + "resources";
+   private static final String PATH_TO_RESULT_DIR = "src" + File.separator + "main" + File.separator + "resources";
 
    /**
     * Create initial data csv files
