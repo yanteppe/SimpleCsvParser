@@ -1,14 +1,13 @@
 package com.yan.csv_data_collector;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
 
 /**
  * CSV file parser
  */
-public class CsvParser implements FileParser<Product> {
+public class FileParserImpl implements FileParser<Product> {
    private int indexOfMaxPrice;
    private float maxPrice = 0;
    private List<Product> resultList = new ArrayList<>(1000);
@@ -64,6 +63,20 @@ public class CsvParser implements FileParser<Product> {
       return Arrays.asList(Objects.requireNonNull(new File(pathToCsvSource).listFiles()));
    }
 
+   private void writeResultToFile(String pathToResultFile, List<Product> resultList) {
+      try (FileOutputStream out = new FileOutputStream("notes.txt");
+           BufferedOutputStream bos = new BufferedOutputStream(out)) {
+
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
+
+   private void writeRowToFile(BufferedWriter bufferedWriter, String record) throws IOException {
+      bufferedWriter.write(record);
+      bufferedWriter.newLine();
+   }
+
 //   public List<Product> quickSort(List<Product> list) {
 //      if (list.size() <= 1) return list;
 //      List<Product> sorted = new ArrayList<>();
@@ -85,8 +98,4 @@ public class CsvParser implements FileParser<Product> {
 //      return sorted;
 //   }
 //
-//   public void writeRowToFile(BufferedWriter bufferedWriter, String record) throws IOException {
-//      bufferedWriter.write(record);
-//      bufferedWriter.newLine();
-//   }
 }
